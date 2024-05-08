@@ -1,2 +1,1 @@
-# ArcaneBullet
- # Arcane Bullet - a 2D platformer shooter
+# Arcane Bullet - a 2D platformer shooter
