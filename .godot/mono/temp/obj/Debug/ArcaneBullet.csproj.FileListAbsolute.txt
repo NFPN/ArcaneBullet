@@ -1,0 +1,17 @@
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\bin\Debug\ArcaneBullet.deps.json
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\bin\Debug\ArcaneBullet.runtimeconfig.json
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\bin\Debug\ArcaneBullet.dll
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\bin\Debug\ArcaneBullet.pdb
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\obj\Debug\ArcaneBullet.csproj.AssemblyReference.cache
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\obj\Debug\ArcaneBullet.GeneratedMSBuildEditorConfig.editorconfig
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\obj\Debug\ArcaneBullet.AssemblyInfoInputs.cache
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\obj\Debug\ArcaneBullet.AssemblyInfo.cs
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\obj\Debug\ArcaneBullet.csproj.CoreCompileInputs.cache
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\obj\Debug\ArcaneBu.C6FAFC33.Up2Date
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\obj\Debug\ArcaneBullet.dll
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\obj\Debug\refint\ArcaneBullet.dll
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\obj\Debug\ArcaneBullet.pdb
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\obj\Debug\ArcaneBullet.genruntimeconfig.cache
+C:\Godot\Projects\ArcaneBullet\.godot\mono\temp\obj\Debug\ref\ArcaneBullet.dll
