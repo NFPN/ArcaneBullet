@@ -1,11 +1,41 @@
-# Godot-specific ignores
+# Ignore Godot specific files
 .import/
 export.cfg
 export_presets.cfg
-
-# Imported translations (automatically generated from CSV files)
-*.translation
-
-# Mono-specific ignores
+*.godot
+*.import
+*.mono
 .mono/
-data_*/
+
+# Ignore Visual Studio specific files
+.vscode/
+.vs/
+*.csproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.metaproj.*
+*.VC.db
+*.VC.opendb
+
+# Ignore build outputs
+bin/
+obj/
+
+# Ignore Obsidian specific files
+.obsidian/
+
+# Ignore any log files
+*.log
+
+# Ignore temporary and backup files
+*~
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Ignore system files
+.DS_Store
+Thumbs.db

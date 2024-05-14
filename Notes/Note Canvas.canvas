@@ -1,0 +1,11 @@
+{
+	"nodes":[
+		{"id":"ec9cb55eecd61e00","type":"text","text":"# Main goals\n\nMake it Snappy\n - Movement\n - Enemies\nMake Bullet Time cuz cool and time to aim\n","x":-298,"y":-285,"width":598,"height":345},
+		{"id":"8c5912b167a10a06","x":-1280,"y":-60,"width":600,"height":420,"type":"text","text":"# Cod3 Design"},
+		{"id":"67a5908b37c3fb63","x":580,"y":-160,"width":504,"height":263,"type":"text","text":"# <center>Story???<center>\n\nlol\n\n\n\n\n\n"}
+	],
+	"edges":[
+		{"id":"388165c42b2b01a1","fromNode":"ec9cb55eecd61e00","fromSide":"left","toNode":"8c5912b167a10a06","toSide":"right"},
+		{"id":"0551eb3bb796b5ec","fromNode":"ec9cb55eecd61e00","fromSide":"right","toNode":"67a5908b37c3fb63","toSide":"left"}
+	]
+}
