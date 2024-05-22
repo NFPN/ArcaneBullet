@@ -1,11 +1,11 @@
 {
 	"nodes":[
-		{"id":"ec9cb55eecd61e00","type":"text","text":"# Main goals\n\nMake it Snappy\n - Movement\n - Enemies\nMake Bullet Time cuz cool and time to aim\n","x":-298,"y":-285,"width":598,"height":345},
-		{"id":"8c5912b167a10a06","x":-1280,"y":-60,"width":600,"height":420,"type":"text","text":"# Cod3 Design"},
-		{"id":"67a5908b37c3fb63","x":580,"y":-160,"width":504,"height":263,"type":"text","text":"# <center>Story???<center>\n\nlol\n\n\n\n\n\n"}
+		{"id":"ec9cb55eecd61e00","type":"text","text":"# Main goals\n\n### Magic Gun-Fu\n\n - Should have melee attacks\n - Gun mode and melee mode\n\nMake it Snappy\n - Movement\n - Enemies\nMake Bullet Time cuz cool and time to aim (maybe not?)\n","x":-298,"y":-285,"width":598,"height":345},
+		{"id":"197d684cb2cdb692","type":"file","file":"Notes/Arcane Bullet GDD.md","x":-429,"y":-1720,"width":860,"height":933},
+		{"id":"8c5912b167a10a06","type":"text","text":"# Cod3\n\nModular design for skill composition, \n\nPlayer and enemies will have a set of skills they can activate","x":-1180,"y":-112,"width":600,"height":420}
 	],
 	"edges":[
 		{"id":"388165c42b2b01a1","fromNode":"ec9cb55eecd61e00","fromSide":"left","toNode":"8c5912b167a10a06","toSide":"right"},
-		{"id":"0551eb3bb796b5ec","fromNode":"ec9cb55eecd61e00","fromSide":"right","toNode":"67a5908b37c3fb63","toSide":"left"}
+		{"id":"2368682810cbd0a9","fromNode":"197d684cb2cdb692","fromSide":"bottom","toNode":"ec9cb55eecd61e00","toSide":"top"}
 	]
 }

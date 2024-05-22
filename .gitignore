@@ -25,6 +25,7 @@ obj/
 
 # Ignore Obsidian specific files
 .obsidian/
+Notes/Secrets/
 
 # Ignore any log files
 *.log

@@ -54,16 +54,18 @@ public partial class Player : CharacterBody2D
 		if (dashTimer > .5)
 			canDash = true;
 
-		//TODO: Face mouse direction, will have to improve animation for this
-		//maybe make it face when shooting only
-		//playerAnimationSprite.FlipH = GetGlobalMousePosition().X < Position.X;
+		if (curVelocity.X == 0)
+			playerAnimationSprite.FlipH = GetGlobalMousePosition().X < Position.X;
+
+
 		if (curDirection != 0)
 		{
 			playerAnimationSprite.FlipH = curDirection < 0;
 			lastDirection = curDirection;
 		}
 
-		curVelocity.Y += Gravity * (float)delta;
+		if (curVelocity.Y < 650)
+			curVelocity.Y += Gravity * (float)delta;
 
 		if (!isDashing)
 			curVelocity.X = curDirection * Speed;
