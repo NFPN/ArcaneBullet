@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c67riug5a1x4i"]
+
+[ext_resource type="Script" path="res://Scripts/Components/HitboxComponent.cs" id="1_1ju37"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqpbk"]
+radius = 9.73684
+height = 30.5263
+
+[node name="HitboxComponent" type="CollisionShape2D"]
+position = Vector2(0, 2)
+scale = Vector2(3.8, 3.8)
+shape = SubResource("CapsuleShape2D_dqpbk")
+script = ExtResource("1_1ju37")

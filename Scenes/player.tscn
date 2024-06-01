@@ -1,7 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://5wwwqeph8vks"]
+[gd_scene load_steps=37 format=3 uid="uid://5wwwqeph8vks"]
 
 [ext_resource type="Texture2D" uid="uid://c432j7dftwnso" path="res://Assets/Sprites/Mage_Full_Spritesheet.png" id="2_n0f8u"]
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="2_y8cfu"]
+[ext_resource type="Script" path="res://Scripts/MagicGun.cs" id="3_fe43c"]
+[ext_resource type="Texture2D" uid="uid://c165h0pfp5ncn" path="res://Assets/Sprites/ChargeGunBlack.png" id="3_y25b3"]
+[ext_resource type="PackedScene" uid="uid://c67riug5a1x4i" path="res://Scenes/Components/hitbox_component.tscn" id="4_v3c3w"]
+[ext_resource type="PackedScene" uid="uid://c62exhlnoicu3" path="res://Scenes/Components/health_component.tscn" id="5_oyveh"]
+[ext_resource type="PackedScene" uid="uid://roi8u2ynf5v2" path="res://Scenes/Components/dash_component.tscn" id="6_jr02u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u8q2c"]
 atlas = ExtResource("2_n0f8u")
@@ -169,23 +174,99 @@ animations = [{
 "speed": 14.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqpbk"]
-radius = 9.73684
-height = 30.5263
+[sub_resource type="AtlasTexture" id="AtlasTexture_elxdn"]
+atlas = ExtResource("3_y25b3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7loc"]
+atlas = ExtResource("3_y25b3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osj7o"]
+atlas = ExtResource("3_y25b3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qhcy"]
+atlas = ExtResource("3_y25b3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxl7b"]
+atlas = ExtResource("3_y25b3")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdk8n"]
+atlas = ExtResource("3_y25b3")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sp42q"]
+atlas = ExtResource("3_y25b3")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pevm"]
+atlas = ExtResource("3_y25b3")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sga40"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elxdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7loc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osj7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qhcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxl7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdk8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sp42q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pevm")
+}],
+"loop": true,
+"name": &"Live",
+"speed": 13.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(169, 112)
 script = ExtResource("2_y8cfu")
 
 [node name="PlayerAnimationSprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4.035, 4.035)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_mo3c8")
-animation = &"crouch"
+animation = &"idle"
 autoplay = "idle"
-frame = 2
-frame_progress = 1.0
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-scale = Vector2(3.8, 3.8)
-shape = SubResource("CapsuleShape2D_dqpbk")
+[node name="MagicGun" type="Node2D" parent="." node_paths=PackedStringArray("GunSprite")]
+scale = Vector2(2, 2)
+script = ExtResource("3_fe43c")
+GunSprite = NodePath("GunSprite")
+
+[node name="GunSprite" type="AnimatedSprite2D" parent="MagicGun"]
+z_index = 11
+position = Vector2(49.5, 0.5)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_sga40")
+animation = &"Live"
+autoplay = "Live"
+frame_progress = 0.451722
+
+[node name="BulletSpawnPoint" type="Node2D" parent="MagicGun"]
+position = Vector2(64, -3.5)
+
+[node name="HitboxComponent" parent="." instance=ExtResource("4_v3c3w")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_oyveh")]
+
+[node name="DashComponent" parent="." instance=ExtResource("6_jr02u")]

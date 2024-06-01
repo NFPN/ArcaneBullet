@@ -1,12 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://c61gx6plmxpxe"]
+[gd_scene load_steps=9 format=3 uid="uid://c61gx6plmxpxe"]
 
 [ext_resource type="Texture2D" uid="uid://cujcuiciq26jk" path="res://Assets/Sprites/Tiles.png" id="1_bsobd"]
 [ext_resource type="PackedScene" uid="uid://5wwwqeph8vks" path="res://Scenes/player.tscn" id="3_4f5rl"]
 [ext_resource type="Script" path="res://Scripts/Camera.cs" id="3_q1dw6"]
-[ext_resource type="Texture2D" uid="uid://e6w67k783hlh" path="res://Assets/Sprites/GUN.png" id="3_warhd"]
-[ext_resource type="Texture2D" uid="uid://c165h0pfp5ncn" path="res://Assets/Sprites/ChargeGunBlack.png" id="5_bucpn"]
-[ext_resource type="Texture2D" uid="uid://5qrh1q5ukvqb" path="res://Assets/Sprites/ChargeGunGray.png" id="5_l26c1"]
 [ext_resource type="PackedScene" uid="uid://k5olt23stcur" path="res://Scenes/chrosshair.tscn" id="7_qfnxs"]
+[ext_resource type="Script" path="res://Scripts/DebugText.cs" id="7_t14ff"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3a6g6"]
 texture = ExtResource("1_bsobd")
@@ -1344,134 +1342,6 @@ texture = ExtResource("1_bsobd")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_3a6g6")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_elxdn"]
-atlas = ExtResource("5_bucpn")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x7loc"]
-atlas = ExtResource("5_bucpn")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_osj7o"]
-atlas = ExtResource("5_bucpn")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4qhcy"]
-atlas = ExtResource("5_bucpn")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uxl7b"]
-atlas = ExtResource("5_bucpn")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pdk8n"]
-atlas = ExtResource("5_bucpn")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sp42q"]
-atlas = ExtResource("5_bucpn")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2pevm"]
-atlas = ExtResource("5_bucpn")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vd3r0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_elxdn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x7loc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_osj7o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4qhcy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uxl7b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pdk8n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sp42q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2pevm")
-}],
-"loop": true,
-"name": &"Live",
-"speed": 13.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cixdx"]
-atlas = ExtResource("5_l26c1")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4bpex"]
-atlas = ExtResource("5_l26c1")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2ydj"]
-atlas = ExtResource("5_l26c1")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1tri1"]
-atlas = ExtResource("5_l26c1")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dtjep"]
-atlas = ExtResource("5_l26c1")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yk2rl"]
-atlas = ExtResource("5_l26c1")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_57bjn"]
-atlas = ExtResource("5_l26c1")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jt5hw"]
-atlas = ExtResource("5_l26c1")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_glxcn"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cixdx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4bpex")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k2ydj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1tri1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dtjep")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yk2rl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_57bjn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jt5hw")
-}],
-"loop": true,
-"name": &"default",
-"speed": 13.0
-}]
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_3oa78"]
 
 [node name="TestScene" type="Node2D"]
@@ -1491,7 +1361,7 @@ scale = Vector2(0.38, 0.38)
 unique_name_in_owner = true
 texture_filter = 1
 texture_repeat = 2
-position = Vector2(296, 352)
+position = Vector2(294, 375)
 zoom = Vector2(1.1, 1.1)
 process_callback = 0
 limit_bottom = 500
@@ -1499,34 +1369,21 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("3_q1dw6")
 
-[node name="Gun" type="Sprite2D" parent="."]
-position = Vector2(418, 354)
-scale = Vector2(1.07, 1)
-texture = ExtResource("3_warhd")
-
-[node name="GunBlack" type="AnimatedSprite2D" parent="."]
-position = Vector2(353, 353)
-sprite_frames = SubResource("SpriteFrames_vd3r0")
-animation = &"Live"
-frame_progress = 0.0840537
-
-[node name="GunGray" type="AnimatedSprite2D" parent="."]
-position = Vector2(296, 352)
-sprite_frames = SubResource("SpriteFrames_glxcn")
-frame_progress = 0.711678
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
-offset_left = 27.0
-offset_top = 24.0
-offset_right = 178.0
-offset_bottom = 108.0
-text = "DEBUG"
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer" node_paths=PackedStringArray("Player")]
+offset_left = 8.0
+offset_top = 13.0
+offset_right = 329.0
+offset_bottom = 165.0
+placeholder_text = "TESTING"
 editable = false
+script = ExtResource("7_t14ff")
+Player = NodePath("../../Player")
 
 [node name="Chrosshair" parent="CanvasLayer" instance=ExtResource("7_qfnxs")]
 unique_name_in_owner = true
+scale = Vector2(1.5, 1.5)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 visible = false

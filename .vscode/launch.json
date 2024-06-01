@@ -13,7 +13,7 @@
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "stopAtEntry": false,
-            "args": ["--debug-collisions", "--path", "${workspaceRoot}"]
+            "args": [/*"--debug-collisions",*/ "--path", "${workspaceRoot}"]
         }
     ]
 }
