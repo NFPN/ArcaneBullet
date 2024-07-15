@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://5wwwqeph8vks"]
+[gd_scene load_steps=45 format=3 uid="uid://5wwwqeph8vks"]
 
 [ext_resource type="Texture2D" uid="uid://c432j7dftwnso" path="res://Assets/Sprites/Mage_Full_Spritesheet.png" id="2_n0f8u"]
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="2_y8cfu"]
@@ -238,15 +238,143 @@ animations = [{
 "speed": 13.0
 }]
 
+[sub_resource type="Animation" id="Animation_yoev7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_s8bmt"]
+resource_name = "crouch"
+
+[sub_resource type="Animation" id="Animation_kolbk"]
+resource_name = "dash"
+
+[sub_resource type="Animation" id="Animation_j4omy"]
+resource_name = "falling"
+
+[sub_resource type="Animation" id="Animation_8xweo"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_wtku1"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_sesce"]
+resource_name = "sprint"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nss8r"]
+_data = {
+"RESET": SubResource("Animation_yoev7"),
+"crouch": SubResource("Animation_s8bmt"),
+"dash": SubResource("Animation_kolbk"),
+"falling": SubResource("Animation_j4omy"),
+"idle": SubResource("Animation_8xweo"),
+"run": SubResource("Animation_wtku1"),
+"sprint": SubResource("Animation_sesce")
+}
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(169, 112)
 script = ExtResource("2_y8cfu")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(4, 4)
+texture = ExtResource("2_n0f8u")
+hframes = 4
+vframes = 6
+
 [node name="PlayerAnimationSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_mo3c8")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
+frame_progress = 0.172268
 
 [node name="MagicGun" type="Node2D" parent="." node_paths=PackedStringArray("GunSprite")]
 scale = Vector2(2, 2)
@@ -266,7 +394,13 @@ frame_progress = 0.451722
 position = Vector2(64, -3.5)
 
 [node name="HitboxComponent" parent="." instance=ExtResource("4_v3c3w")]
+position = Vector2(3, 3.00001)
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_oyveh")]
 
 [node name="DashComponent" parent="." instance=ExtResource("6_jr02u")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nss8r")
+}

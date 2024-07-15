@@ -31,7 +31,6 @@ namespace Arcanum
 		{
 			playerAnimationSprite = GetNode<AnimatedSprite2D>("PlayerAnimationSprite");
 			dashComponent = GetNode<DashComponent>("DashComponent");
-			// playerSkills.Add(new Dash());
 		}
 
 		public override void _Process(double delta)
@@ -83,8 +82,8 @@ namespace Arcanum
 
 			Velocity = curVelocity;
 
-			UpdateAnimationState();
 			MoveAndSlide();
+			UpdateAnimationState();
 		}
 
 		private void UpdateAnimationState()
