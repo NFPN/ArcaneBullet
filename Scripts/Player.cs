@@ -76,14 +76,12 @@ namespace Arcanum
 			if (Input.IsActionJustPressed("dash"))
 				curVelocity.X += dashComponent.Dash((int)Math.Round(lastDirection));
 
-			//TODO: This should be toggled in settings (off by default)
-			// if (doubleTapDetection.HasDoubleTapped(Input.IsActionJustPressed("left") || Input.IsActionJustPressed("right")))
-			// 	curVelocity.X += dashComponent.Dash((int)Math.Round(lastDirection));
-
 			Velocity = curVelocity;
 
 			MoveAndSlide();
 			UpdateAnimationState();
+
+			var collision = GetLastSlideCollision();
 		}
 
 		private void UpdateAnimationState()

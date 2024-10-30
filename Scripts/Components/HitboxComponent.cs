@@ -13,7 +13,8 @@ namespace Arcanum.Components
         public override void _Ready()
         {
             thisCallable = new Callable(this, nameof(OnBodyCollision));
-            Connect("hitbox_collision", thisCallable);
+            //need to connect to something that makes sense, otherwise this wont work
+            //Connect("hitbox_collision", thisCallable);
         }
 
         private void OnBodyCollision(Node body)
