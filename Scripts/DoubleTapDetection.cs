@@ -1,27 +1,30 @@
 using Godot;
 
-public partial class DoubleTapDetection : Node
+namespace Arcanum
 {
-    private const float DoubleTapInterval = 0.5f;
-    private bool isWaitingSecondTap = false;
-    private float lastTapTime = 0;
-
-    public bool HasDoubleTapped(bool tapped)
+    public partial class DoubleTapDetection : Node
     {
-        if (tapped)
+        private const float DoubleTapInterval = 0.5f;
+        private bool isWaitingSecondTap = false;
+        private float lastTapTime = 0;
+
+        public bool HasDoubleTapped(bool tapped)
         {
-            float currentTime = Time.GetTicksMsec() / 1000.0f;
-
-            if (isWaitingSecondTap && currentTime - lastTapTime <= DoubleTapInterval)
+            if (tapped)
             {
-                isWaitingSecondTap = false;
-                return true;
-            }
-            else
-                isWaitingSecondTap = true;
+                float currentTime = Time.GetTicksMsec() / 1000.0f;
 
-            lastTapTime = currentTime;
+                if (isWaitingSecondTap && currentTime - lastTapTime <= DoubleTapInterval)
+                {
+                    isWaitingSecondTap = false;
+                    return true;
+                }
+                else
+                    isWaitingSecondTap = true;
+
+                lastTapTime = currentTime;
+            }
+            return false;
         }
-        return false;
     }
 }

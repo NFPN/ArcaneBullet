@@ -1,28 +1,31 @@
 using Godot;
-using System;
 
-public partial class MagicGun : Node2D
+namespace Arcanum
 {
-	[Export] public AnimatedSprite2D GunSprite;
-	private Vector2 mousePos;
-	private float currentRot;
+    public partial class MagicGun : Node2D
+    {
+        [Export] public AnimatedSprite2D GunSprite { get; set; }
 
-	public override void _Ready()
-	{
-		GunSprite ??= GetNode<AnimatedSprite2D>("GunSprite");
-	}
+        private Vector2 mousePos;
+        private float currentRot;
 
-	public override void _Process(double delta)
-	{
-		mousePos = GetGlobalMousePosition();
+        public override void _Ready()
+        {
+            GunSprite ??= GetNode<AnimatedSprite2D>("GunSprite");
+        }
 
-		LookAt(mousePos);
+        public override void _Process(double delta)
+        {
+            mousePos = GetGlobalMousePosition();
 
-		currentRot = Mathf.Abs(Mathf.RadToDeg(Rotation) % 360);
+            LookAt(mousePos);
 
-		if (currentRot > 90 && currentRot < 270 && !GunSprite.FlipV)
-			GunSprite.FlipV = true;
-		else if ((currentRot < 90 || currentRot > 270) && GunSprite.FlipV)
-			GunSprite.FlipV = false;
-	}
+            currentRot = Mathf.Abs(Mathf.RadToDeg(Rotation) % 360);
+
+            if (currentRot > 90 && currentRot < 270 && !GunSprite.FlipV)
+                GunSprite.FlipV = true;
+            else if ((currentRot < 90 || currentRot > 270) && GunSprite.FlipV)
+                GunSprite.FlipV = false;
+        }
+    }
 }

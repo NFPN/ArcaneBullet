@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "ArcaneBullet": {
+      "commandName": "Project"
+    },
+    "GodotNet": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Godot\\GodotNet\\Godot_v4.3-stable_mono_win64.exe",
+      "commandLineArgs": "--path.--verbose",
+      "workingDirectory": ".",
+      "nativeDebugging": true
+    }
+  }
+}

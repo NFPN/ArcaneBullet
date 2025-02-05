@@ -6,7 +6,7 @@ namespace Arcanum.Components
     // [Tool]
     public partial class DashComponent : Node2D
     {
-        [Export] public int DashSpeed { get; set; } = 1500;
+        [Export] public int DashSpeed { get; set; } = 800;
         [Export] public double DashDuration { get; set; } = 0.1;
         [Export] public double DashRefreshTime { get; set; } = 0.5;
 

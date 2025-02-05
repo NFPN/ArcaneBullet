@@ -1,49 +1,54 @@
+using Arcanum.Components;
 using Godot;
-using System;
 
-public partial class Camera : Camera2D
+namespace Arcanum
 {
-	[Export] public float PlayerWeight = 1;
-	[Export] public float MouseWeight = 0.1f;
-	[Export] public float offsetX = 60;
+    public partial class Camera : Camera2D
+    {
+        [Export] public float PlayerWeight { get; set; } = 1;
+        [Export] public float MouseWeight { get; set; } = 0.1f;
+        [Export] public float OffsetX { get; set; } = 60;
 
-	private Node2D playerNode;
-	private Node2D chrosshairNode;
+        private Node2D playerNode;
+        private Node2D chrosshairNode;
+        private DashComponent dashComponent;
 
+        private float minZoom = 1.1f;
+        private float maxZoom = 1.5f;
+        private float zoomDuration = 0.2f;
+        private bool shouldZoom;
 
-	private float minZoom = 1.1f;
-	private float maxZoom = 1.5f;
-	private float zoomDuration = 0.2f;
-	private bool shouldZoom;
+        public override void _Ready()
+        {
+            playerNode = GetNode<Node2D>("%Player");
+            chrosshairNode = GetNode<Node2D>("%Chrosshair/Sprite2D");
+            dashComponent = GetNode<DashComponent>("%DashComponent");
+        }
 
-	public override void _Ready()
-	{
-		playerNode = GetNode<Node2D>("%Player");
-		chrosshairNode = GetNode<Node2D>("%Chrosshair/Sprite2D");
-	}
+        public override void _Process(double delta)
+        {
+            if (playerNode == null || chrosshairNode == null || dashComponent == null)
+            {
+                return;
+            }
 
-	public override void _Process(double delta)
-	{
-		if (playerNode == null || chrosshairNode == null)
-			return;
+            var targetPos = (playerNode.GlobalPosition * PlayerWeight)
+                          + (chrosshairNode.GlobalPosition * MouseWeight);
 
-		var targetPos = (playerNode.GlobalPosition * PlayerWeight)
-					  + (chrosshairNode.GlobalPosition * MouseWeight);
+            // Apply smoothing to the camera movement
+            var currentPos = GlobalPosition;
+            var newPos = currentPos.Lerp(targetPos, 1);
+            newPos.X = Mathf.Round(newPos.X - OffsetX);
+            newPos.Y = Mathf.Round(newPos.Y);
 
-		// Apply smoothing to the camera movement
-		var currentPos = GlobalPosition;
-		var newPos = currentPos.Lerp(targetPos, 1);
-		newPos.X = Mathf.Round(newPos.X - offsetX);
-		newPos.Y = Mathf.Round(newPos.Y);
+            GlobalPosition = newPos;
 
-		GlobalPosition = newPos;
+            shouldZoom = Input.IsActionPressed("sprint") && dashComponent.IsDashing;
 
-		shouldZoom = Input.IsActionPressed("sprint");
-
-		if (shouldZoom && Zoom.X < maxZoom)
-			Zoom = Zoom.Lerp(new Vector2(minZoom, minZoom), 0.1f);
-		else
-			Zoom = Zoom.Lerp(new Vector2(maxZoom, maxZoom), 0.01f);
-
-	}
+            if (shouldZoom && Zoom.X < maxZoom)
+                Zoom = Zoom.Lerp(new Vector2(minZoom, minZoom), 0.1f);
+            else
+                Zoom = Zoom.Lerp(new Vector2(maxZoom, maxZoom), 0.01f);
+        }
+    }
 }
