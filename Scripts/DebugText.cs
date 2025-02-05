@@ -31,9 +31,9 @@ namespace Arcanum
         public override void _Process(double delta)
         {
             debugText.AppendLine($"DEBUG - {DateTime.UtcNow}")
-            .AppendLine(currentPlayerHealth.ToString())
-            .AppendLine(Camera.Zoom.ToString())
-            .AppendLine(dashComponent.IsDashing.ToString());
+            .AppendLine($"HP: {currentPlayerHealth.ToString()}")
+            .AppendLine($"Cam: {Camera.Zoom.ToString()}")
+            .AppendLine($"Dash: {dashComponent.IsDashing.ToString()}");
 
             Text = debugText.ToString();
 
