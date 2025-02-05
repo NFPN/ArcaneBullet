@@ -7,10 +7,13 @@ namespace Arcanum
 {
     public partial class DebugText : TextEdit
     {
-        [Export] Node2D Player;
+        [Export] public Node2D Player { get; set; }
         private HealthComponent playerHealth;
         private int currentPlayerHealth = 0;
 
+        [Export] public Camera Camera { get; set; }
+
+        private DashComponent dashComponent;
         private StringBuilder debugText = new();
 
         public override void _Ready()
@@ -22,12 +25,15 @@ namespace Arcanum
         {
             playerHealth = Player.GetNode<HealthComponent>("HealthComponent");
             playerHealth.Connect(nameof(playerHealth.HealthChanged), new Callable(this, nameof(HealthChanged)));
+            dashComponent = Player.GetNode<DashComponent>("%DashComponent");
         }
 
         public override void _Process(double delta)
         {
             debugText.AppendLine($"DEBUG - {DateTime.UtcNow}")
-            .AppendLine(currentPlayerHealth.ToString());
+            .AppendLine(currentPlayerHealth.ToString())
+            .AppendLine(Camera.Zoom.ToString())
+            .AppendLine(dashComponent.IsDashing.ToString());
 
             Text = debugText.ToString();
 

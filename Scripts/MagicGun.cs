@@ -6,7 +6,7 @@ namespace Arcanum
     {
         [Export] public AnimatedSprite2D GunSprite { get; set; }
 
-        private Vector2 mousePos;
+        private Vector2 mousePos = new();
         private float currentRot;
 
         public override void _Ready()
@@ -16,7 +16,7 @@ namespace Arcanum
 
         public override void _Process(double delta)
         {
-            mousePos = GetGlobalMousePosition();
+            mousePos = GetGlobalMousePosition().Round();
 
             LookAt(mousePos);
 

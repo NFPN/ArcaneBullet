@@ -18,7 +18,7 @@ namespace Arcanum
 
         public override void _Process(double delta)
         {
-            mousePos = GetGlobalMousePosition();
+            mousePos = GetGlobalMousePosition().Round();
             isMouseWithinWindow = mousePos.X >= 0 && mousePos.X <= boundary.X &&
                                   mousePos.Y >= 0 && mousePos.Y <= boundary.Y;
 

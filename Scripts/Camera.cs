@@ -13,16 +13,16 @@ namespace Arcanum
         private Node2D chrosshairNode;
         private DashComponent dashComponent;
 
-        private float minZoom = 1.1f;
-        private float maxZoom = 1.5f;
-        private float zoomDuration = 0.2f;
-        private bool shouldZoom;
+        private const float zoomOut = 0.85f;
+        private const float zoomIn = 1f;
+        private const float zoomSpeed = 0.01f;
+        private bool shouldZoomOut;
 
         public override void _Ready()
         {
             playerNode = GetNode<Node2D>("%Player");
             chrosshairNode = GetNode<Node2D>("%Chrosshair/Sprite2D");
-            dashComponent = GetNode<DashComponent>("%DashComponent");
+            dashComponent = playerNode.GetNode<DashComponent>("%DashComponent");
         }
 
         public override void _Process(double delta)
@@ -43,12 +43,12 @@ namespace Arcanum
 
             GlobalPosition = newPos;
 
-            shouldZoom = Input.IsActionPressed("sprint") && dashComponent.IsDashing;
+            shouldZoomOut = dashComponent.IsDashing;
 
-            if (shouldZoom && Zoom.X < maxZoom)
-                Zoom = Zoom.Lerp(new Vector2(minZoom, minZoom), 0.1f);
+            if (shouldZoomOut && Zoom.X > zoomOut)
+                Zoom = Zoom.Lerp(new Vector2(zoomOut, zoomOut), zoomSpeed);
             else
-                Zoom = Zoom.Lerp(new Vector2(maxZoom, maxZoom), 0.01f);
+                Zoom = Zoom.Lerp(new Vector2(zoomIn, zoomIn), 0.01f);
         }
     }
 }
