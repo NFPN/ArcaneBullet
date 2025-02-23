@@ -1,10 +1,11 @@
-[gd_scene load_steps=45 format=3 uid="uid://5wwwqeph8vks"]
+[gd_scene load_steps=55 format=3 uid="uid://5wwwqeph8vks"]
 
 [ext_resource type="Texture2D" uid="uid://c432j7dftwnso" path="res://Assets/Sprites/Mage_Full_Spritesheet.png" id="2_n0f8u"]
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="2_y8cfu"]
 [ext_resource type="Script" path="res://Scripts/MagicGun.cs" id="3_fe43c"]
 [ext_resource type="Texture2D" uid="uid://c165h0pfp5ncn" path="res://Assets/Sprites/ChargeGunBlack.png" id="3_y25b3"]
 [ext_resource type="PackedScene" uid="uid://c67riug5a1x4i" path="res://Scenes/Components/hitbox_component.tscn" id="4_v3c3w"]
+[ext_resource type="Texture2D" uid="uid://o33h4riqhksf" path="res://Assets/Sprites/ChargeGun2.png" id="5_chw8u"]
 [ext_resource type="PackedScene" uid="uid://c62exhlnoicu3" path="res://Scenes/Components/health_component.tscn" id="5_oyveh"]
 [ext_resource type="PackedScene" uid="uid://roi8u2ynf5v2" path="res://Scenes/Components/dash_component.tscn" id="6_jr02u"]
 
@@ -238,6 +239,70 @@ animations = [{
 "speed": 13.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0p7l"]
+atlas = ExtResource("5_chw8u")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq55h"]
+atlas = ExtResource("5_chw8u")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7q38"]
+atlas = ExtResource("5_chw8u")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_717y2"]
+atlas = ExtResource("5_chw8u")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b76vq"]
+atlas = ExtResource("5_chw8u")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k41vh"]
+atlas = ExtResource("5_chw8u")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su1y7"]
+atlas = ExtResource("5_chw8u")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ely0r"]
+atlas = ExtResource("5_chw8u")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86n63"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0p7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xq55h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7q38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_717y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b76vq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k41vh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su1y7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ely0r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
 [sub_resource type="Animation" id="Animation_yoev7"]
 length = 0.001
 tracks/0/type = "value"
@@ -379,11 +444,11 @@ frame_progress = 0.569051
 flip_h = true
 
 [node name="MagicGun" type="Node2D" parent="." node_paths=PackedStringArray("GunSprite")]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("3_fe43c")
-GunSprite = NodePath("GunSprite")
+GunSprite = NodePath("GunAnimation")
 
 [node name="GunSprite" type="AnimatedSprite2D" parent="MagicGun"]
+visible = false
 z_index = 11
 texture_filter = 1
 position = Vector2(49.5, 0.5)
@@ -392,8 +457,15 @@ animation = &"Live"
 autoplay = "Live"
 frame_progress = 0.451722
 
-[node name="BulletSpawnPoint" type="Node2D" parent="MagicGun"]
-position = Vector2(64, -3.5)
+[node name="GunAnimation" type="AnimatedSprite2D" parent="MagicGun"]
+position = Vector2(31, 0)
+sprite_frames = SubResource("SpriteFrames_86n63")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+
+[node name="BulletSpawnPoint" type="Node2D" parent="MagicGun/GunAnimation"]
+position = Vector2(8, -3)
 
 [node name="HitboxComponent" parent="." instance=ExtResource("4_v3c3w")]
 position = Vector2(0, 0)

@@ -13,14 +13,14 @@ namespace Arcanum
         private Node2D chrosshairNode;
         private DashComponent dashComponent;
 
-        private const float zoomOut = 0.85f;
-        private const float zoomIn = 1f;
+        private const float zoomOut = 2.3f;
+        private const float zoomIn = 2.5f;
         private const float zoomSpeed = 0.01f;
         private bool shouldZoomOut;
 
         public override void _Ready()
         {
-            playerNode = GetNode<Node2D>("%Player");
+            playerNode = Owner.GetNode<Node2D>("%Player");
             chrosshairNode = Owner.GetNode<Node2D>("%Chrosshair/Sprite2D");
             dashComponent = playerNode.GetNode<DashComponent>("%DashComponent");
         }

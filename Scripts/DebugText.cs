@@ -23,8 +23,8 @@ namespace Arcanum
 
         public void StartDebugger()
         {
-            Camera = Owner.GetNode<CanvasLayer>("MainLayer").GetNode<SubViewportContainer>("SubViewportContainer").GetChild(0).GetChild(0).GetNode<Camera>("%MainCamera");
-            Player = Owner.GetNode<CanvasLayer>("MainLayer").GetNode<SubViewportContainer>("SubViewportContainer").GetChild(0).GetChild(0).GetNode<CharacterBody2D>("%Player");
+            Camera = Owner.GetNode<Camera>("%MainCamera");
+            Player = Owner.GetNode<CharacterBody2D>("%Player");
             playerHealth = Player.GetNode<HealthComponent>("HealthComponent");
             playerHealth.Connect(nameof(playerHealth.HealthChanged), new Callable(this, nameof(HealthChanged)));
             dashComponent = Player.GetNode<DashComponent>("%DashComponent");
@@ -36,7 +36,8 @@ namespace Arcanum
 
             debugText.AppendLine($"DEBUG - {DateTime.UtcNow}")
             .AppendLine($"HP: {currentPlayerHealth.ToString()}")
-            .AppendLine($"Cam: {Camera.Zoom.ToString()}")
+            .AppendLine($"Zoom: {Camera.Zoom.ToString()}")
+            .AppendLine($"campos: {Camera.Position.ToString()}")
             .AppendLine($"Speed: {Player.Velocity.ToString()}")
             .AppendLine($"Dash: {dashComponent.IsDashing.ToString()}");
 
