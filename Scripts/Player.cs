@@ -7,13 +7,13 @@ namespace Arcanum
     public partial class Player : CharacterBody2D
     {
         [Export]
-        public int Gravity { get; set; } = 3000;
+        public int Gravity { get; set; } = 2800;
 
         [Export]
-        public int Speed { get; set; } = 350;
+        public float JumpSpeed { get; set; } = 700;
 
         [Export]
-        public float JumpSpeed { get; set; } = 800;
+        public float Speed { get; set; } = 200;
 
         private bool usedDoubleJump;
         private double tapTimer;
@@ -24,6 +24,7 @@ namespace Arcanum
         private float lastDirection = 1;
 
         private DashComponent dashComponent;
+        private HitboxComponent hitboxComponent;
         private DoubleTapDetection doubleTapDetection = new();
         private AnimatedSprite2D playerAnimationSprite;
         private Vector2 curVelocity;
@@ -33,6 +34,9 @@ namespace Arcanum
         {
             playerAnimationSprite = GetNode<AnimatedSprite2D>("PlayerAnimationSprite");
             dashComponent = GetNode<DashComponent>("DashComponent");
+            hitboxComponent = GetNode<HitboxComponent>("HitboxComponent");
+
+            Speed = 200;
         }
 
         public override void _Process(double delta)
@@ -56,6 +60,7 @@ namespace Arcanum
 
             if (curDirection != 0)
             {
+                // hitboxComponent.Position = new Vector2(hitboxComponent.Position.Y, curDirection < 0 ? -1 : 1);
                 playerAnimationSprite.FlipH = curDirection < 0;
                 lastDirection = curDirection;
             }

@@ -7,7 +7,7 @@ namespace Arcanum
 {
     public partial class DebugText : TextEdit
     {
-        [Export] public Node2D Player { get; set; }
+        [Export] public CharacterBody2D Player { get; set; }
         private HealthComponent playerHealth;
         private int currentPlayerHealth = 0;
 
@@ -23,6 +23,8 @@ namespace Arcanum
 
         public void StartDebugger()
         {
+            Camera = Owner.GetNode<CanvasLayer>("MainLayer").GetNode<SubViewportContainer>("SubViewportContainer").GetChild(0).GetChild(0).GetNode<Camera>("%MainCamera");
+            Player = Owner.GetNode<CanvasLayer>("MainLayer").GetNode<SubViewportContainer>("SubViewportContainer").GetChild(0).GetChild(0).GetNode<CharacterBody2D>("%Player");
             playerHealth = Player.GetNode<HealthComponent>("HealthComponent");
             playerHealth.Connect(nameof(playerHealth.HealthChanged), new Callable(this, nameof(HealthChanged)));
             dashComponent = Player.GetNode<DashComponent>("%DashComponent");
@@ -30,9 +32,12 @@ namespace Arcanum
 
         public override void _Process(double delta)
         {
+            if (Player == null) return;
+
             debugText.AppendLine($"DEBUG - {DateTime.UtcNow}")
             .AppendLine($"HP: {currentPlayerHealth.ToString()}")
             .AppendLine($"Cam: {Camera.Zoom.ToString()}")
+            .AppendLine($"Speed: {Player.Velocity.ToString()}")
             .AppendLine($"Dash: {dashComponent.IsDashing.ToString()}");
 
             Text = debugText.ToString();

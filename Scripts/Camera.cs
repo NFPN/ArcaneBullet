@@ -21,7 +21,7 @@ namespace Arcanum
         public override void _Ready()
         {
             playerNode = GetNode<Node2D>("%Player");
-            chrosshairNode = GetNode<Node2D>("%Chrosshair/Sprite2D");
+            chrosshairNode = Owner.GetNode<Node2D>("%Chrosshair/Sprite2D");
             dashComponent = playerNode.GetNode<DashComponent>("%DashComponent");
         }
 

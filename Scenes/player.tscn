@@ -361,6 +361,8 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(169, 112)
 script = ExtResource("2_y8cfu")
+Gravity = 2000
+JumpSpeed = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -370,21 +372,21 @@ hframes = 4
 vframes = 6
 
 [node name="PlayerAnimationSprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_mo3c8")
 animation = &"run"
 autoplay = "idle"
-frame_progress = 0.172268
+frame_progress = 0.569051
+flip_h = true
 
 [node name="MagicGun" type="Node2D" parent="." node_paths=PackedStringArray("GunSprite")]
-scale = Vector2(2, 2)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("3_fe43c")
 GunSprite = NodePath("GunSprite")
 
 [node name="GunSprite" type="AnimatedSprite2D" parent="MagicGun"]
 z_index = 11
+texture_filter = 1
 position = Vector2(49.5, 0.5)
-scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_sga40")
 animation = &"Live"
 autoplay = "Live"
@@ -394,7 +396,8 @@ frame_progress = 0.451722
 position = Vector2(64, -3.5)
 
 [node name="HitboxComponent" parent="." instance=ExtResource("4_v3c3w")]
-position = Vector2(3, 3.00001)
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_oyveh")]
 
